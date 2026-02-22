@@ -4,22 +4,45 @@
 
 This document outlines the project structure for a modern, scalable web application.
 
-## Project Structure
+## Folder Organization
+
+The project is organized into the following directories:
+
+- **`public/`**: Contains all the static assets that will be served to the browser.
+    - **`assets/`**: For storing media files.
+        - **`images/`**: To store images.
+        - **`fonts/`**: To store custom fonts.
+    - **`css/`**: Contains the CSS files for styling the application.
+    - **`js/`**: Contains the JavaScript files for the application's logic.
+    - **`index.html`**: The main entry point of the application.
+- **`.idx/`**: Contains environment configuration files for Firebase Studio.
+- **`.vscode/`**: Contains IDE-specific settings.
+- **`blueprint.md`**: This file, which documents the project.
+- **`GEMINI.md`**: Guidelines for the AI assistant.
+- **`README.md`**: General information about the project.
+
+## Current Project Structure
 
 ```
 /
-├── src/
+├── public/
 │   ├── assets/
 │   │   ├── images/
-│   │   ├── fonts/
-│   │   └── icons/
-│   ├── components/
+│   │   └── fonts/
+│   ├── css/
+│   │   └── style.css
 │   ├── js/
 │   │   └── main.js
-│   └── styles/
-│       └── style.css
-├── index.html
-└── blueprint.md
+│   └── index.html
+├── .idx/
+│   ├── dev.nix
+│   └── mcp.json
+├── .vscode/
+│   └── settings.json
+├── blueprint.md
+├── firebase-debug.log
+├── GEMINI.md
+└── README.md
 ```
 
 ## Design - Login Page
@@ -49,4 +72,6 @@ This document outlines the project structure for a modern, scalable web applicat
 
 ## Current Plan
 
-- Design and implement a professional and innovative dark-theme login page.
+- **Task:** Organize the project folder structure.
+- **Status:** Done.
+- **Next Steps:** Ready for the next instruction.
