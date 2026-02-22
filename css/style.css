@@ -1,42 +1,66 @@
+/*
+ *   STYLESHEET UTAMA (style.css)
+ *   File ini berisi semua gaya visual untuk aplikasi, termasuk layout, warna, font, dan elemen interaktif.
+ *   Menggunakan Desain "Dark Mode" yang modern.
+ */
+
+/* Variabel Global (Custom Properties) */
+/* Mendefinisikan palet warna dan font utama di satu tempat. */
+/* Ini memudahkan perubahan tema atau gaya secara konsisten di seluruh aplikasi. */
 :root {
-    --background-color: #121212;
-    --surface-color: #1E1E1E;
-    --primary-color: #3D52D5;
-    --on-surface-color: #FFFFFF;
-    --on-surface-variant-color: #BDBDBD;
-    --error-color: #CF6679;
-    --font-family: 'Poppins', sans-serif;
+    --background-color: #121212; /* Warna latar belakang utama (sangat gelap) */
+    --surface-color: #1E1E1E;    /* Warna untuk permukaan kartu/kontainer (sedikit lebih terang) */
+    --primary-color: #3D52D5;     /* Warna aksen utama untuk tombol dan link */
+    --on-surface-color: #FFFFFF; /* Warna teks utama (putih) */
+    --on-surface-variant-color: #BDBDBD; /* Warna teks sekunder/abu-abu untuk hint */
+    --error-color: #CF6679;       /* Warna untuk pesan error */
+    --success-color: #66bb6a;     /* Warna untuk pesan sukses */
+    --font-family: 'Poppins', sans-serif; /* Font utama aplikasi */
 }
 
+/* Reset CSS Universal */
+/* Menghilangkan margin dan padding default browser dan mengatur box-sizing. */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Gaya dasar untuk semua halaman */
 body {
     font-family: var(--font-family);
     background-color: var(--background-color);
     color: var(--on-surface-color);
+    /* Hapus display:flex dan properti pemusatan dari sini */
+}
+
+/* Gaya khusus untuk halaman otentikasi (login, register, dll.) */
+.auth-page {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: 100vh; /* Memastikan body mengisi seluruh tinggi layar */
+    /* Efek gradien radial halus di latar belakang untuk sentuhan visual. */
     background-image: radial-gradient(circle at top right, rgba(61, 82, 213, 0.1), transparent 40%),
                       radial-gradient(circle at bottom left, rgba(61, 82, 213, 0.1), transparent 50%);
 }
 
+
+/* Kontainer Utama Form */
+/* Ini adalah kartu utama yang membungkus semua konten form (login, register, dll). */
 .login-container {
     background-color: var(--surface-color);
     padding: 3rem;
     border-radius: 16px;
     width: 100%;
-    max-width: 450px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 450px; /* Batas lebar maksimum agar tidak terlalu lebar di layar besar */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Bayangan untuk efek kedalaman */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Garis tepi halus */
     text-align: center;
+    margin: 1rem;
 }
 
+/* Header Form (Judul dan Sub-judul) */
 .login-header h1 {
     font-weight: 600;
     font-size: 2rem;
@@ -49,14 +73,16 @@ body {
     margin-bottom: 2rem;
 }
 
-.login-form {
+/* Layout Form */
+.login-form, .register-form, .forgot-password-form {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.5rem; /* Jarak antar elemen input */
 }
 
+/* Grup Input (Label + Input Field) */
 .input-group {
-    text-align: left;
+    text-align: left; /* Meluruskan label ke kiri */
 }
 
 .input-group label {
@@ -66,10 +92,12 @@ body {
     font-size: 0.9rem;
 }
 
+/* Kontainer untuk Input dengan Ikon */
 .input-with-icon {
     position: relative;
 }
 
+/* Gaya Ikon di dalam Input */
 .input-with-icon .icon {
     position: absolute;
     left: 1rem;
@@ -81,28 +109,32 @@ body {
     transition: color 0.3s ease;
 }
 
+/* Input Field */
 .input-with-icon input {
     width: 100%;
-    padding: 1rem 3rem; /* Make space for both icons */
+    padding: 1rem 3rem; /* Padding untuk memberi ruang bagi ikon di kiri dan kanan */
     background-color: var(--background-color);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     color: var(--on-surface-color);
     font-family: var(--font-family);
     font-size: 1rem;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transisi halus */
 }
 
+/* Gaya Input saat dalam status :focus */
 .input-with-icon input:focus {
-    outline: none;
+    outline: none; /* Menghilangkan outline default */
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(61, 82, 213, 0.3);
+    box-shadow: 0 0 0 3px rgba(61, 82, 213, 0.3); /* Efek "glow" saat fokus */
 }
 
-.input-with-icon input:focus + .icon {
+/* Mengubah warna ikon saat input field di-fokus */
+.input-with-icon input:focus ~ .icon {
     color: var(--primary-color);
 }
 
+/* Link "Lupa Password" */
 .forgot-password {
     display: block;
     text-align: right;
@@ -117,6 +149,7 @@ body {
     color: var(--primary-color);
 }
 
+/* Tombol Login Utama */
 .login-button {
     background-color: var(--primary-color);
     color: var(--on-surface-color);
@@ -128,14 +161,16 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 15px rgba(61, 82, 213, 0.4);
+    box-shadow: 0 4px 15px rgba(61, 82, 213, 0.4); /* Bayangan untuk efek "lifted" */
 }
 
+/* Efek Hover untuk Tombol */
 .login-button:hover {
-    background-color: #4A63FF; /* A slightly lighter shade */
+    background-color: #4A63FF; /* Warna sedikit lebih terang saat di-hover */
     box-shadow: 0 6px 20px rgba(74, 99, 255, 0.5);
 }
 
+/* Link untuk Sign Up/Registrasi */
 .signup-link {
     margin-top: 2rem;
 }
@@ -156,6 +191,7 @@ body {
     color: #4A63FF;
 }
 
+/* Ikon untuk Menampilkan/Menyembunyikan Password */
 .toggle-password-icon {
     position: absolute;
     right: 1rem;
@@ -170,4 +206,27 @@ body {
 
 .toggle-password-icon:hover {
     color: var(--primary-color);
+}
+
+/* --- Gaya Notifikasi --- */
+.notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 1000;
+    display: none; /* Awalnya disembunyikan */
+}
+
+.notification.success {
+    background-color: var(--success-color);
+}
+
+.notification.error {
+    background-color: var(--error-color);
 }

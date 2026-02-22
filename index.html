@@ -1,63 +1,68 @@
+<!--
+  *   HALAMAN LOGIN UTAMA (index.html)
+  *   Ini adalah halaman pertama yang dilihat pengguna.
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Login</title>
+    <title>PKM-LOGIN</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        .notification {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 15px 25px;
-            border-radius: 8px;
-            color: #fff;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            z-index: 1000;
-            display: none; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        .notification.success { background-color: #28a745; }
-        .notification.error { background-color: #dc3545; }
-    </style>
 </head>
-<body>
-    <div id="notification" class="notification"></div>
+<body class="auth-page"> <!-- Class ditambahkan di sini -->
 
+    <!-- Notifikasi Pop-up -->
+    <!-- Awalnya disembunyikan, ditampilkan oleh JavaScript. -->
+    <div id="notification" class="notification" style="display: none;"></div>
+
+    <!-- Kontainer Form Login -->
     <div class="login-container">
         <div class="login-header">
             <h1>Welcome Back</h1>
-            <p>Please enter your credentials to login.</p>
+            <p>Please enter your details to sign in.</p>
         </div>
+
+        <!-- Form Login -->
         <form class="login-form">
+            <!-- Grup Input Email -->
             <div class="input-group">
                 <label for="email">Email</label>
                 <div class="input-with-icon">
-                    <input type="email" id="email" placeholder="Enter your email" required>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    <!-- Ikon Email (SVG) -->
+                    <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2zm-2 0l-8 5l-8-5zm0 12H4V8l8 5l8-5z"/></svg></span>
                 </div>
             </div>
+
+            <!-- Grup Input Password -->
             <div class="input-group">
                 <label for="password">Password</label>
                 <div class="input-with-icon">
-                    <input type="password" id="password" placeholder="Enter your password" required>
-                    <span id="toggle-password-show" class="toggle-password-icon" style="display: block;"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16" height="1em" width="1em"><path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/><path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/></svg></span>
-                    <span id="toggle-password-hide" class="toggle-password-icon" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-eye-slash-fill" viewBox="0 0 16 16" height="1em" width="1em"><path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.938 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z"/><path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12-.708.708z"/></svg></span>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    <!-- Ikon Kunci (SVG) -->
+                    <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 17a2 2 0 0 0 2-2a2 2 0 0 0-2-2a2 2 0 0 0-2 2a2 2 0 0 0 2 2m6 -9h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2m-6 9c-1.1 0-2-.9-2-2s.9-2 2-2s2 .9 2 2s-.9 2-2 2m-4-7V6c0-1.65 1.35-3 3-3s3 1.35 3 3v2z"/></svg></span>
+                    <!-- Ikon Toggle Password (SVG) -->
+                    <span class="toggle-password-icon" id="toggle-password-show" style="display: block;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5M12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5s5 2.24 5 5s-2.24 5-5 5m0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3s3-1.34 3-3s-1.34-3-3-3"/></svg></span>
+                    <span class="toggle-password-icon" id="toggle-password-hide" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 7c2.76 0 5 2.24 5 5s-2.24 5-5 5s-5-2.24-5-5s2.24-5 5-5m0-2C7 5 2.73 8.11 1 12.5c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5C21.27 8.11 17 5 12 5m-2.27 3.4l6.87 6.87c-.4.23-.84.4-1.32.52c-1.07.25-2.18.06-3.18-.52c-.5-.28-.96-.64-1.34-1.06c-.4-.44-.72-.96-1.03-1.5zM20.94 4.06L19 6l-2.09 2.09c.87.65 1.63 1.45 2.23 2.39c.63 1 .96 2.11.96 3.27c0 1.29-.38 2.51-1.06 3.6c-.66 1.05-1.5 1.95-2.53 2.65l2.09 2.09L21.94 20L23 18.94L4.06 1L3 2.06l2.12 2.12c-1.32.96-2.43 2.25-3.23 3.7C.93 9.49 1.11 11.1 2.03 12.5c1.73 4.39 6 7.5 11 7.5c1.55 0 3.05-.3 4.45-.86l2.09 2.09L19 19.94z"/></svg></span>
                 </div>
-                <a href="forgot-password.html" class="forgot-password">Forgot password?</a>
+                <a href="forgot-password.html" class="forgot-password">Forgot Password?</a>
             </div>
-            <button type="submit" class="login-button">Login</button>
+
+            <!-- Tombol Login -->
+            <button type="submit" class="login-button">Sign In</button>
         </form>
+
+        <!-- Link ke Halaman Registrasi -->
         <div class="signup-link">
             <p>Don't have an account? <a href="register.html">Sign Up</a></p>
         </div>
     </div>
 
+    <!-- Skrip utama untuk fungsionalitas login -->
     <script type="module" src="js/main.js"></script>
 </body>
 </html>

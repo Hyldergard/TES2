@@ -1,0 +1,230 @@
+/*
+ *   STYLESHEET DASHBOARD (dashboard.css)
+ *   Gaya khusus untuk layout utama dashboard.
+ */
+
+/* Mengimpor variabel warna dari stylesheet utama */
+@import url('style.css');
+
+:root {
+    --sidebar-width: 260px;
+    --sidebar-width-collapsed: 80px;
+    /* Tinggi header disesuaikan */
+    --header-height: 60px;
+    --transition-speed: 0.3s;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--on-surface-color);
+    font-family: var(--font-family);
+    margin: 0;
+    padding-left: var(--sidebar-width);
+    transition: padding-left var(--transition-speed) ease-in-out;
+}
+
+body.sidebar-collapsed {
+    padding-left: var(--sidebar-width-collapsed);
+}
+
+/* --- Sidebar --- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: var(--sidebar-width);
+    background-color: var(--surface-color);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    padding: 1.2rem;
+    transition: all var(--transition-speed) ease-in-out;
+    overflow-x: hidden;
+}
+
+body.sidebar-collapsed .sidebar {
+    width: var(--sidebar-width-collapsed);
+    padding: 1.2rem 0.5rem;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    min-height: 40px;
+    padding: 0 0.8rem;
+}
+
+body.sidebar-collapsed .sidebar-header {
+    justify-content: center;
+}
+
+.sidebar-logo-link {
+    color: var(--on-surface-color);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+}
+
+body.sidebar-collapsed .sidebar-logo-link {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+.sidebar-toggle-btn {
+    background: none;
+    border: none;
+    color: var(--on-surface-variant-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background-color 0.2s, transform var(--transition-speed) ease-in-out;
+    position: relative;
+    z-index: 10;
+}
+
+.sidebar-toggle-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.sidebar-collapsed .sidebar-toggle-btn {
+    transform: rotate(180deg);
+}
+
+/* --- Menu Navigasi --- */
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.nav-item {
+    margin-bottom: 0.5rem;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--on-surface-variant-color);
+    transition: background-color 0.2s, color 0.2s;
+    white-space: nowrap;
+}
+
+body.sidebar-collapsed .nav-link {
+    justify-content: center;
+    padding: 0.8rem;
+}
+
+.nav-link:hover, .nav-link.active {
+    background-color: var(--primary-color);
+    color: var(--on-surface-color);
+    box-shadow: 0 4px 10px rgba(61, 82, 213, 0.3);
+}
+
+.nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    margin-right: 1.5rem;
+    transition: margin-right var(--transition-speed) ease-in-out;
+}
+
+body.sidebar-collapsed .nav-icon {
+    margin-right: 0;
+}
+
+.nav-text {
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+}
+
+body.sidebar-collapsed .nav-text {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+.sidebar-footer {
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+/* --- Konten Utama --- */
+.main-content {
+    /* Padding atas disesuaikan untuk header yang lebih kecil */
+    padding: 1.5rem 2rem;
+    transition: all var(--transition-speed) ease-in-out;
+}
+
+.main-header {
+    /* Gaya header yang lebih ringkas */
+    background-color: var(--surface-color);
+    padding: 1rem 2rem;
+    margin: -1.5rem -2rem 1.5rem -2rem; /* Negatif margin untuk membuatnya "full-width" */
+    border-radius: 0;
+    min-height: var(--header-height);
+    display: flex;
+    align-items: center;
+}
+
+.main-header h1 {
+    /* Ukuran font lebih kecil */
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.card {
+    background-color: var(--surface-color);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    body, body.sidebar-collapsed {
+        padding-left: var(--sidebar-width-collapsed);
+    }
+    .sidebar, body.sidebar-collapsed .sidebar {
+        width: var(--sidebar-width-collapsed);
+    }
+    .nav-text, .sidebar-logo-link {
+        display: none;
+    }
+    .sidebar:hover {
+        width: var(--sidebar-width);
+    }
+    .sidebar:hover .nav-text, .sidebar:hover .sidebar-logo-link {
+        display: inline;
+    }
+     .sidebar-toggle-btn {
+        display: none;
+    }
+    .sidebar-header, body.sidebar-collapsed .sidebar-header {
+        justify-content: center;
+    }
+    .nav-link, body.sidebar-collapsed .nav-link {
+        justify-content: center;
+    }
+
+    .main-header {
+        margin: -1.5rem -1.5rem 1.5rem -1.5rem; /* Margin disesuaikan untuk mobile */
+        padding: 1rem 1.5rem;
+    }
+}
