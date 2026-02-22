@@ -1,14 +1,47 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - My Awesome Website</title>
+    <link rel="stylesheet" href="src/styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>Welcome Back</h1>
+            <p>Please enter your details to sign in</p>
+        </div>
+        <form class="login-form">
+            <div class="input-group">
+                <label for="email">Email</label>
+                <div class="input-with-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon">
+                        <path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z" />
+                        <path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z" />
+                    </svg>
+                    <input type="email" id="email" name="email" placeholder="name@domain.com" required>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <div class="input-with-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon">
+                        <path fill-rule="evenodd" d="M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3A5.25 5.25 0 0 0 12 1.5Zm-3.75 5.25v3a3.75 3.75 0 0 0 3.75 3.75h3a3.75 3.75 0 0 0 3.75-3.75v-3a3.75 3.75 0 0 0-3.75-3.75h-3A3.75 3.75 0 0 0 8.25 6.75Z" clip-rule="evenodd" />
+                    </svg>
+                    <input type="password" id="password" name="password" placeholder="••••••••" required>
+                </div>
+                <a href="#" class="forgot-password">Forgot password?</a>
+            </div>
+            <button type="submit" class="login-button">Sign In</button>
+        </form>
+        <div class="signup-link">
+            <p>Don't have an account? <a href="#">Sign up for free</a></p>
+        </div>
+    </div>
+    <script src="src/js/main.js"></script>
 </body>
 </html>
