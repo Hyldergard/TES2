@@ -83,7 +83,7 @@ body {
 
 .input-with-icon input {
     width: 100%;
-    padding: 1rem 1rem 1rem 3rem; /* Add padding for the icon */
+    padding: 1rem 3rem; /* Make space for both icons */
     background-color: var(--background-color);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
@@ -154,4 +154,20 @@ body {
 
 .signup-link a:hover {
     color: #4A63FF;
+}
+
+.toggle-password-icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.2rem;
+    height: 1.2rem;
+    color: var(--on-surface-variant-color);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.toggle-password-icon:hover {
+    color: var(--primary-color);
 }

@@ -3,44 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - My Awesome Website</title>
+    <title>Modern Login</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 15px 25px;
+            border-radius: 8px;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            z-index: 1000;
+            display: none; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .notification.success { background-color: #28a745; }
+        .notification.error { background-color: #dc3545; }
+    </style>
 </head>
 <body>
+    <div id="notification" class="notification"></div>
+
     <div class="login-container">
         <div class="login-header">
             <h1>Welcome Back</h1>
-            <p>Please enter your details to sign in</p>
+            <p>Please enter your credentials to login.</p>
         </div>
         <form class="login-form">
             <div class="input-group">
-                <label for="username">Username</label>
+                <label for="email">Email</label>
                 <div class="input-with-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon">
-                        <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clip-rule="evenodd" />
-                    </svg>
-                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                    <input type="email" id="email" placeholder="Enter your email" required>
                 </div>
             </div>
             <div class="input-group">
                 <label for="password">Password</label>
                 <div class="input-with-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon">
-                        <path fill-rule="evenodd" d="M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3A5.25 5.25 0 0 0 12 1.5Zm-3.75 5.25v3a3.75 3.75 0 0 0 3.75 3.75h3a3.75 3.75 0 0 0 3.75-3.75v-3a3.75 3.75 0 0 0-3.75-3.75h-3A3.75 3.75 0 0 0 8.25 6.75Z" clip-rule="evenodd" />
-                    </svg>
-                    <input type="password" id="password" name="password" placeholder="••••••••" required>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                    <span id="toggle-password-show" class="toggle-password-icon" style="display: block;"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16" height="1em" width="1em"><path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/><path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/></svg></span>
+                    <span id="toggle-password-hide" class="toggle-password-icon" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-eye-slash-fill" viewBox="0 0 16 16" height="1em" width="1em"><path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.938 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z"/><path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12-.708.708z"/></svg></span>
                 </div>
-                <a href="#" class="forgot-password">Forgot password?</a>
+                <a href="forgot-password.html" class="forgot-password">Forgot password?</a>
             </div>
-            <button type="submit" class="login-button">Sign In</button>
+            <button type="submit" class="login-button">Login</button>
         </form>
         <div class="signup-link">
-            <p>Don't have an account? <a href="#">Sign up for free</a></p>
+            <p>Don't have an account? <a href="register.html">Sign Up</a></p>
         </div>
     </div>
-    <script src="js/main.js"></script>
+
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>
